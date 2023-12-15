@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from './security/AuthContext'
+import { useAuth } from "./security/AuthContext";
 import { useNavigate } from "react-router-dom";
 import {
   deleteTodoApi,
@@ -9,11 +9,11 @@ import {
 export default function ListTodosComponent() {
   const today = new Date();
 
-  const authContext = useAuth()
+  const authContext = useAuth();
 
-  const username = authContext.username
+  const username = authContext.username;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const targetDate = new Date(
     today.getFullYear() + 12,
@@ -46,7 +46,11 @@ export default function ListTodosComponent() {
 
   function updateTodo(id) {
     console.log(id);
-    navigate(`/todo/${id}`)
+    navigate(`/todo/${id}`);
+  }
+
+  const addNewTodo = () => {
+    navigate('/todo/-1')
   }
 
   return (
@@ -92,6 +96,7 @@ export default function ListTodosComponent() {
           </tbody>
         </table>
       </div>
+      <div className="btn btn-success m-3" onClick={addNewTodo}>Add New Todo</div>
     </div>
   );
 }
