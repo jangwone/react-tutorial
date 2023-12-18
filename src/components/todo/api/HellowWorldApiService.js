@@ -1,16 +1,13 @@
-import axios from "axios";
-
-const apiClient = axios.create({
-  baseURL: "http://localhost:8080",
-});
+import { apiClient } from "./ApiClient";
 
 //Reponse to preflight request doesn't pass access control check  (error)
-export const returnHelloWorldBean = (username) =>
+export const returnHelloWorldBean = (username,token) =>
   apiClient.get(`/test/path/${username}`,{
-    headers: { 
-      Authorization:'Basic d29uZTpkdW1teQ=='
-    }
-  });
+    // headers: { 
+    //   Authorization:token
+    // }
+  }
+);
 
 export const executeBasicAuthenticationService 
 = (token) =>apiClient.get(`/basicauth`,{

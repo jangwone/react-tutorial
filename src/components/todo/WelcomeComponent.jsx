@@ -1,14 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { returnHelloWorldBean } from "./api/HellowWorldApiService";
+import { useAuth } from "./security/AuthContext";
 
 export default function WelcomeComponent() {
   const { username } = useParams();
 
+  const authContext = useAuth()
+
   const [message, setMessage] = useState(null);
 
   function callHelloRestApi() {
-    returnHelloWorldBean("myworld")
+    returnHelloWorldBean("myworld",authContext.token)
       .then((res) => successfulResponse(res))
       .catch((error) => errorResponse(error))
       .finally(() => console.log("clean up"));
