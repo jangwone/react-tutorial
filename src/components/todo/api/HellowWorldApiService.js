@@ -9,9 +9,3 @@ export const returnHelloWorldBean = (username,token) =>
   }
 );
 
-export const executeBasicAuthenticationService 
-= (token) =>apiClient.get(`/basicauth`,{
-    headers: { 
-      Authorization:token
-    }
-  });
